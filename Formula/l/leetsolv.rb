@@ -24,7 +24,7 @@ class Leetsolv < Formula
     # Add a question with piped input:
     # Note: "test note"
     # Familiarity: 5 (Fluent - skips memory question since >= Medium triggers it, but 5 is max)
-    # Memory Use: 1 (Reasoned)  
+    # Memory Use: 1 (Reasoned)
     # Importance: 2 (Medium)
     input = "test note\n5\n1\n2\n"
     pipe_output("#{bin}/leetsolv add https://leetcode.com/problems/two-sum", input)
