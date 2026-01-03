@@ -17,12 +17,19 @@ class Leetsolv < Formula
   end
 
   test do
-    # Test status command shows initial state
+    # Test status shows 0 questions initially
     output = shell_output("#{bin}/leetsolv status")
-    assert_match "Total Questions:", output
+    assert_match "Total Questions: 0", output
 
-    # Add a problem and verify it was added
-    system bin/"leetsolv", "add", "https://leetcode.com/problems/two-sum"
+    # Add a question with piped input:
+    # Note: "test note"
+    # Familiarity: 5 (Fluent - skips memory question since >= Medium triggers it, but 5 is max)
+    # Memory Use: 1 (Reasoned)  
+    # Importance: 2 (Medium)
+    input = "test note\n5\n1\n2\n"
+    pipe_output("#{bin}/leetsolv add https://leetcode.com/problems/two-sum", input)
+
+    # Verify question was added
     output = shell_output("#{bin}/leetsolv status")
     assert_match "Total Questions: 1", output
   end
